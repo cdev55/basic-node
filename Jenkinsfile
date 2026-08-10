@@ -49,10 +49,16 @@ pipeline {
     }
     stage("deploy") {
       steps {
+        input {
+            message "Are you sure you want to deploy version: $params.VERSION?"
+            ok "Yes"
+            cancel "No"
+        }
+      }
+      steps {
         script {
             gv.deploy(params.VERSION)
         }
-        
       }
     }
   }
