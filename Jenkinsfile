@@ -25,9 +25,18 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Docker Build') {
             steps {
-                echo 'Build completed!'
+                echo 'Building Docker image...!!'
+                sh 'docker build -t my-node-app .'
+            }
+        }
+
+        stage('Docker Run') {
+            steps {
+                echo 'Running Docker container...!!'
+                sh "docker rm -f my-node-app || true"
+                sh 'docker run -d -p 3000:3000 --name my-node-app my-node-app'
             }
         }
     }
