@@ -48,17 +48,19 @@ pipeline {
       }
     }
     stage("deploy") {
-      steps {
         input {
-            message "Are you sure you want to deploy version: $params.VERSION?"
-            ok "Yes"
-            cancel "No"
+            message "Select the environment to deploy"
+            ok "Done"
+            parameters {
+                choice(name: 'ENV', choices: ['dev', 'prod'], description: 'The environment to deploy')
+            }
         }
-      }
       steps {
         script {
+            echo "Deploying version: $params.VERSION to $params.ENV"
             gv.deploy(params.VERSION)
         }
+        
       }
     }
   }
