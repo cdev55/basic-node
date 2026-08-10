@@ -31,7 +31,7 @@ pipeline {
         }
       steps {
         script {
-            gv.build()
+            gv.build(params.VERSION)
         }
       }
     }
