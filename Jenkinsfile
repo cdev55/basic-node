@@ -30,7 +30,9 @@ pipeline {
             }
         }
       steps {
-        gv.build()
+        script {
+            gv.build()
+        }
       }
     }
     stage("test"){
@@ -40,12 +42,16 @@ pipeline {
             }
         }
       steps {
-        gv.test()
+        script {
+            gv.test()
+        }
       }
     }
     stage("deploy") {
       steps {
-        gv.deploy()
+        script {
+            gv.deploy()
+        }
         
       }
     }
