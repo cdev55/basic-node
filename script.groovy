@@ -6,9 +6,9 @@ def test() {
     echo "Testing the application..."
 }
 
-def build() {
+def build(version) {
     echo "Building the application..."
-    echo "Building version: $params.VERSION"
+    echo "Building version: $version"
 }
 
 return this

@@ -50,7 +50,7 @@ pipeline {
     stage("deploy") {
       steps {
         script {
-            gv.deploy()
+            gv.deploy(params.VERSION)
         }
         
       }
