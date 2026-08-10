@@ -41,7 +41,7 @@ pipeline {
             sh 'echo $USER'
             sh 'echo $PWD'
             sh 'echo $SERVER_CREDS'
-            sh 'echo deploy version: ${params.VERSION}'
+            sh 'echo deploy version: $params.VERSION'
         }
       }
     }
